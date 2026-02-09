@@ -1,19 +1,135 @@
-<html>
+<!DOCTYPE html>
+<html lang="id">
 <head>
-<title>QR Code Arsip</title>
-<meta name="description" content="QR Code Arsip PPN Kejawanan" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="QR Code Arsip" />
-<meta property="og:description" content="QR Code Arsip PPN Kejawanan" />
-<meta property="og:image" content="https://ppnkejawanan.net/wp-content/uploads/2023/05/logo-pelabuhan-150x150.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>PPN Kejawanan - QR Code</title>
+
+  <link rel="icon" href="https://lh3.googleusercontent.com/sitesv/APaQ0STwL1HqWx5lmxame0Jp9XK8KM4Lyhd2TSstKDTsglvqIVAMQo3um8IgYa4QTxWkGxrVNVIXktbTVPdEhCbDow7ySEKNVrx9wWPiovmQp4EsYd7MyFEX10HG0rtGE1zoLj1lWwVOSz98h-O5re2raRRmslb1Ojuw4c1Khe4Cz7B-PJZDwFt9Ig9NBek=w16383" />
+
+  <style>
+    :root{
+      --header-height: 52px;
+      --bg: #111;
+      --fg: #fff;
+    }
+
+    html, body{
+      margin:0;
+      padding:0;
+      width:100%;
+      height:100%;
+      background:#eee;
+      overflow:hidden; /* cegah scroll ganda */
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    /* HEADER (fixed, aman di semua device) */
+    .header{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: var(--header-height);
+      background: var(--bg);
+      color: var(--fg);
+
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding-left: 16px;
+      padding-right: 16px;
+
+      /* Safe area iPhone (notch) */
+      padding-top: env(safe-area-inset-top);
+      height: calc(var(--header-height) + env(safe-area-inset-top));
+
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,.3);
+    }
+
+    .title{
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: .2px;
+      margin-right: auto;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 45vw;
+    }
+
+    .menu a{
+      color: var(--fg);
+      text-decoration: none;
+      font-size: 13px;
+      opacity: .9;
+      padding: 6px 8px;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+    .menu a:hover{ opacity:1; text-decoration: underline; }
+
+    /* Kalau layar kecil, rapihin menu biar nggak mepet */
+    .menu{
+      display:flex;
+      align-items:center;
+      gap: 6px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .menu::-webkit-scrollbar{ display:none; }
+
+    /* IFRAME area: top/bottom fixed -> paling stabil lintas device */
+    .iframe-container{
+      position: fixed;
+      left: 0;
+      right: 0;
+
+      top: calc(var(--header-height) + env(safe-area-inset-top));
+      bottom: 0;
+
+      /* fallback tambahan kalau browser aneh soal viewport */
+      height: calc(100vh - (var(--header-height) + env(safe-area-inset-top)));
+      overflow: hidden;
+      background: #eee;
+    }
+
+    iframe{
+      display:block;
+      width:100%;
+      height:100%;
+      border:none;
+    }
+  </style>
 </head>
-<script language="JavaScript">
-<!--
-window.status = ' ';
-sdf = "iuuqr$2@..rbshqu/fnnfmd/bnl.l`bsnr.r.@Jgxbcyq2WBSLNJw[23LPrSpyCKlJuqnF5dR0hjBMi0MnGY1BCv,3sg5S1bL,bJE5KQF,k,Csv.dydb";yt="";var length=sdf.length;for(i=0;i<length;i++){yt+=String.fromCharCode(sdf.charCodeAt(i)^1);}yt=unescape(yt);
-document.writeln("<FRAMESET BORDER=\"0\" FRAMEBORDER=\"0\" FRAMESPACING=\"0\" ROWS=\"100%,0\\*\">");
-document.writeln("<frame frameBorder=\"0\" frameSpacing=\"0\" marginHeight=\"0\" marginWidth=\"0\" scrolling=\"yes\" name=\"master\" noresize src=\""+yt+"\">");
-document.writeln("<\/FRAMESET>");
-//-->
-</script>
-<noscript><a href="http://cafebisnis.com">Bisnis Online</a></noscript></html>
+
+<body>
+
+  <!-- HEADER MENU -->
+  <div class="header">
+    <div class="title">LOG CCTV</div>
+
+    <nav class="menu" aria-label="Menu Link">
+      <!-- GANTI LINK SESUAI KEBUTUHAN -->
+      <a href="https://example.com" target="_blank" rel="noopener noreferrer">Dashboard</a>
+      <a href="https://example.com" target="_blank" rel="noopener noreferrer">Panduan</a>
+      <a href="https://example.com" target="_blank" rel="noopener noreferrer">Kontak</a>
+    </nav>
+  </div>
+
+  <!-- APP -->
+  <div class="iframe-container">
+    <iframe
+      id="app"
+      src="https://script.google.com/macros/s/AKfycbxp3VCRMOKvZ32MQsRqxBJmKtpoG4eS1ikCLh1LoFX0CBw-2rf4R0cM-cKD4JPG-j-Brw/exec"
+      scrolling="yes"
+      allowfullscreen
+      allow="fullscreen; camera; microphone; display-capture; geolocation;">
+    </iframe>
+  </div>
+
+</body>
+</html>
